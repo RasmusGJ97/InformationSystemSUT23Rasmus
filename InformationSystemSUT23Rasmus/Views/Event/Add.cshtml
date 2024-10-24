@@ -1,0 +1,49 @@
+﻿@model Event
+
+@{
+    ViewData["PageTitle"] = "Add Event";
+}
+
+<div class="container mt-4">
+    <h3 class="mb-4">@ViewData["PageTitle"]</h3>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="widget p-5 border rounded shadow">
+                <form asp-action="Add">
+                    <input type="hidden" asp-for="EventID" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="NoteDate" class="form-label">Datum</label>
+                        <input type="date" asp-for="NoteDate" class="form-control" placeholder="Enter Date" />
+                        <span asp-validation-for="NoteDate" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="NoteDescription" class="form-label">Note Description</label>
+                        <input type="textbox" asp-for="NoteDescription" class="form-control" placeholder="Enter Description" />
+                        <span asp-validation-for="NoteDescription" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="DriverID" class="form-label">Driver ID</label>
+                        <input type="text" asp-for="DriverID" class="form-control" placeholder="Enter ID of Driver" />
+                        <span asp-validation-for="DriverID" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="BeloppIn" class="form-label">Belopp In</label>
+                        <input type="number" asp-for="BeloppIn" class="form-control" placeholder="Enter Belopp In" />
+                        <span asp-validation-for="BeloppIn" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="BeloppUt" class="form-label">Belopp Ut</label>
+                        <input type="number" asp-for="BeloppUt" class="form-control" placeholder="Enter Belopp Ut" />
+                        <span asp-validation-for="BeloppUt" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

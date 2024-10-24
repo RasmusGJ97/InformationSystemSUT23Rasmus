@@ -1,0 +1,71 @@
+﻿@model Driver
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-info text-white">
+            <h3 class="mb-0">Driver Details</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-muted">Driver ID:</h5>
+                    <p>@Html.DisplayFor(model => model.DriverID)</p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-muted">Driver Name:</h5>
+                    <p>@Html.DisplayFor(model => model.DriverName)</p>
+                </div>                
+                <div class="col-md-6">
+                    <h5 class="text-muted">Car Reg. nr:</h5>
+                    <p>@Html.DisplayFor(model => model.CarReg)</p>
+                </div>                
+                <div class="col-md-6">
+                    <h5 class="text-muted">Responsible Empolyee</h5>
+                    <p>@Html.DisplayFor(model => model.ResponsibleEmployee)</p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-muted">Total Belopp Ut:</h5>
+                    <p>@Model.Events.Sum(e => e.BeloppUt)</p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-muted">Total Belopp In:</h5>
+                    <p>@Model.Events.Sum(e => e.BeloppIn)</p>
+                </div>
+            </div>
+
+            <hr />
+
+            <h4>Events</h4>
+            @if (Model.Events != null && Model.Events.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var eventItem in Model.Events)
+                    {
+                        <li class="list-group-item">
+                            Date: @eventItem.NoteDate.ToString("yyyy-MM-dd")<br />
+                            Description: @eventItem.NoteDescription<br />
+                            Belopp In: @eventItem.BeloppIn<br />
+                            Belopp Ut: @eventItem.BeloppUt<br />
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>No events available for this driver.</p>
+            }
+        </div>
+
+        <div class="card-footer text-right">
+            <a asp-action="Edit" asp-route-id="@Model.DriverID" class="btn btn-warning">
+                Edit <i class="fas fa-edit"></i>
+            </a>
+            <a asp-action="Delete" asp-route-id="@Model.DriverID" class="btn btn-danger">
+                Delete <i class="fas fa-edit"></i>
+            </a>
+            <a asp-action="AllDrivers" class="btn btn-secondary">
+                Back to List <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+﻿@model Employee
+
+<h2>Are you sure You want to delete this employee?</h2>
+
+
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title"><strong>Employee Name: </strong>@Html.DisplayFor(model => model.Name)</h6>
+            <h6 class="card-text"><strong>Email: </strong>@Html.DisplayFor(model => model.Email)</h6>
+            <h6 class="card-text"><strong>Role: </strong>@Html.DisplayFor(model => model.Role)</h6>
+            <div class="d-flex justify-content-between mt-4">
+                <form asp-action="Delete" method="post" class="d-inline">
+                    <input asp-for="EmployeeID" type="hidden" />
+                    <button type="submit" class="btn btn-danger btn-sm">
+                        Delete <i class="fa fa-trash"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

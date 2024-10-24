@@ -1,0 +1,60 @@
+﻿@model Employee
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h3 class="text-center mb-3">Login</h3>
+                    <form asp-action="Login" method="post">
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewData.ModelState.Values.First().Errors.First().ErrorMessage
+                            </div>
+                        }
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="height: 38px; display: flex; align-items: center;">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </div>
+                                <input asp-for="Email" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="height: 38px; display: flex; align-items: center;">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                </div>
+                                <input asp-for="Password" class="form-control" type="password" required />
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" value="Login" class="btn btn-primary w-100 mt-3" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/*     .card {
+        border-radius: 15px;
+    } */
+
+    .card-body {
+        padding: 2rem;
+    }
+
+    input[type="text"], input[type="password"] {
+        border-radius: 5px; 
+    }
+</style>

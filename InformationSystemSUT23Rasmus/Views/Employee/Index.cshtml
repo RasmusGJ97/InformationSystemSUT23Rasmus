@@ -1,0 +1,23 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Select Option";
+}
+
+<div class="container text-center mt-5">
+    <h2>Select an Option</h2>
+    <div class="mt-4">
+        @if (Context.Session.GetString("IsAdmin") == "Admin")
+        {
+            <a asp-controller="Employee" asp-action="AllEmployees" class="btn btn-primary btn-lg m-3">
+                Employees
+            </a>
+        }
+        <a asp-controller="Driver" asp-action="AllDrivers" class="btn btn-secondary btn-lg m-3">
+            Drivers
+        </a>        
+        <a asp-controller="Event" asp-action="Index" class="btn btn-primary btn-lg m-3">
+            Events
+        </a>
+    </div>
+</div>
